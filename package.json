@@ -1,7 +1,15 @@
 {
   "name": "alura-books-server",
   "version": "1.0.0",
-  "description": "",
+  "description": "**Criando uma API com Express**",
+  "homepage": "https://github.com/GabrielSantos9/alura-books-server#readme",
+  "bugs": {
+    "url": "https://github.com/GabrielSantos9/alura-books-server/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GabrielSantos9/alura-books-server.git"
+  },
   "license": "ISC",
   "author": "Gabriel Santos",
   "type": "commonjs",
