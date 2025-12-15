@@ -1,7 +1,7 @@
 # alura-books-server
 **Criando uma API com Express**
 
->[!Observações]
+>[!IMPORTANT]
 >**Observações:**
 
 >**`npm init`**
