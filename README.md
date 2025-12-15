@@ -13,12 +13,8 @@ Instala uma dependência Express
 **`npm install -g nodemon`**
 Instala o pack nodemon, que a sua principal função nesse projeto server é não ficar precisando toda hora dar `node app.js` para atualizar o site
 
-## Métodos HTTP:
->**GET**
-
->**POST**
->**PATCH**
->**DELETE**
+> [!TIP]
+> **Serviços web (APIs):**
 
 | Método HTTP | Propósito                     | Operação CRUD | Descrição |
 |-------------|-------------------------------|---------------|-----------|
