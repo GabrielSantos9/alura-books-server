@@ -2,7 +2,7 @@
 **Criando uma API com Express**
 
 >[!IMPORTANT]
-**Observações:**
+>**Observações:**
 
 **`npm init`**
 Inicia um novo pacote Node
