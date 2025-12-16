@@ -1,16 +1,10 @@
 const { Router } = require("express");
 const router = Router()
+const { getLivros } = require("../controladores/livro")
 
 //Criação de uma rota
 // Em resumo, a função do 'get' do express recebe uma  request ('req') e response ('res'). Request: É o que nos é mandado (pessoa que chama o nosso serviço manda uma request) e o que é devolvido para ela é a Response
-router.get('/', (req, res) => {
-  try {
-    res.send("Olá, mundo!");
-  } catch (error) {
-    res.status(500)
-    res.send(error.message)
-  }
-}); // A '/' é o path e o 'req, res': requisição e response
+router.get('/', getLivros);
 
 router.post('/', (req, res) => {
   res.send('Você fez uma requisição do tipo POST')
