@@ -1,21 +1,23 @@
 const { Router } = require("express");
-const router = Router()
-const { getLivros } = require("../controladores/livro")
+const router = Router();
+const {
+  getLivros,
+  getLivro,
+  postLivro,
+  patchLivro,
+  deleteLivro,
+} = require("../controladores/livro");
 
 //Criação de uma rota
 // Em resumo, a função do 'get' do express recebe uma  request ('req') e response ('res'). Request: É o que nos é mandado (pessoa que chama o nosso serviço manda uma request) e o que é devolvido para ela é a Response
-router.get('/', getLivros);
+router.get("/", getLivros);
 
-router.post('/', (req, res) => {
-  res.send('Você fez uma requisição do tipo POST')
-})
+router.get("/:id", getLivro); //Get por ID, pegar apenas um livro especifico (id)
 
-router.patch('/', (req, res) => {
-  res.send('Você fez uma requisição do tipo PATCH')
-})
+router.post("/", postLivro);
 
-router.delete('/', (req, res) => {
-  res.send('Você fez uma requisição do tipo DELETE')
-})
+router.patch("/:id", patchLivro); //Patch por ID, modificar apenas um livro especifico (id), no Postman
 
-module.exports = router //Será exportado o router para caso queira utilizar em outros arquivos (tipo export default no react)
+router.delete("/:id", deleteLivro);
+
+module.exports = router; //Será exportado o router para caso queira utilizar em outros arquivos (tipo export default no react)
