@@ -24,8 +24,15 @@ function getLivro(req, res) {
   //Buscar apenas um livro especifico pelo ID
   try {
     const id = req.params.id;
-    const livro = getLivroPorID(id);
-    res.send(livro);
+
+    if (id && Number(id)) {
+      const livro = getLivroPorID(id);
+      res.send(livro);
+      //Verifica se o id adicionado no link do site (http://localhost:8000/livros/'5') realmente é um número, caso não seja (http://localhost:8000/livros/'teste') retornará um erro informado que o id é válido.
+    } else {
+      res.status(422); //Informa que algum dado adicionado no link não é um dado consistente com o que a aplicação espera.
+      res.send("ID inválido");
+    }
   } catch (error) {
     res.status(500);
     res.send(error.message);
@@ -51,35 +58,34 @@ function patchLivro(req, res) {
     const id = req.params.id; //Pega o id do raq.params.id
     const body = req.body; //Pega o body do req.body
 
-    modificaLivro(body, id); //Chama a função modificaLivro e passará o body e id
-    res.send("Item modificado com sucesso!");
+    if (id && Number(id)) {
+      modificaLivro(body, id); //Chama a função modificaLivro e passará o body e id
+      res.send("Item modificado com sucesso!");
+    } else {
+      res.status(422);
+      res.send("Id inválido");
+    }
   } catch (error) {
     res.status(500);
     res.send(error.message); //Exibe o erro
   }
 }
 
-// function deleteLivro(req, res) {
-//   //Modifica o nome do livro o qual é desejado modificar no Postman
-//   try {
-//     const id = req.params.id; //Pega o id dos parâmetros raq.params.id
-//     excluirLivro(id); //Enviar para uma função do serviço 'excluirLivro(id)'
-//     res.send("Livro deletado com sucesso!")
-//   } catch (error) {
-//     res.status(500);
-//     res.send(error.message); //Exibe o erro
-//   }
-// }
-
 function deleteLivro(req, res) {
-    try {
-        const id = req.params.id
-        deletarLivroPorId(id)
-        res.send("livro deletado com sucesso")
-    } catch (error) {
-        res.status(500)
-        res.send(error.message)
+  try {
+    const id = req.params.id;
+
+    if (id && Number(id)) {
+      deletarLivroPorId(id);
+      res.send("livro deletado com sucesso");
+    } else {
+      res.status(422);
+      res.send("ID inválido");
     }
+  } catch (error) {
+    res.status(500);
+    res.send(error.message);
+  }
 }
 
 module.exports = {
