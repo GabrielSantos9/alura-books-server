@@ -43,9 +43,17 @@ function postLivro(req, res) {
   //Esse post serve para ser inserido um livro no JSON
   try {
     const livroNovo = req.body;
-    insereLivro(livroNovo);
-    res.status(201); //Esse status diz que foi inserido um valor novo com sucesso
-    res.send("Livro inserido com sucesso!");
+    if (req.body.id && req.body.nome)//Verifica se na hora de adicionar um novo livro há tanto o 'id' quanto o 'nome'
+     {
+      insereLivro(livroNovo);
+      res.status(201); //Esse status diz que foi inserido um valor novo com sucesso
+      res.send("Livro inserido com sucesso!");
+    } else {
+      res.status(422);
+      res.send(
+        "O livro enviado não possui as mesmas propriedades dos livros do aplicativo, que são: 'nome' e 'id'."
+      );
+    }
   } catch (error) {
     res.status(500);
     res.send(error.message); //Exibe o erro
