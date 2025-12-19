@@ -2,7 +2,7 @@ const fs = require("fs"); // manipular/ler arquivos do js
 
 function getTodosLivros() {
   const livroGerais = JSON.parse(fs.readFileSync("livros.json")); //'readFileSync' = ler (read) arquivos e 'parse' = transforma em JSON
-  return livroGerais;
+  return livroGerais; //Retorna todos os livros do livro.json
 }
 
 function getLivroPorID(id) {
