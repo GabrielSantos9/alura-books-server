@@ -2,7 +2,6 @@
 
 const {
   getTodosLivros,
-  getLivroPorID,
   insereLivro,
   modificaLivro,
   deletarLivroPorId,
@@ -21,21 +20,11 @@ function getLivros(req, res) {
   }
 } // A '/' é o path e o 'req, res': requisição e response
 
-function getLivro(req, res) {
-  const arrayLivros = [
-    { id: "1", nome: "Livro Iradissimo" },
-    { id: "2", nome: "Livro mucho legal" },
-    { id: "3", nome: "Livro mais que demais 2" },
-    { id: "4", nome: "Livro irado menos irado que o outro" },
-    { id: "5", nome: "Livro mais lindo do mundo" },
-    { id: "6", nome: "Livro iradíssimo mais que demais" },
-  ];
-
+function getLivroID(req, res) {
   try {
-    const id = Number(req.params.id);
-
-    //Busca o livro pelo id
-    const livro = arrayLivros.find((livro) => Number(livro.id) === id);
+    const id = Number(req.params.id); //Serve para converter, validar, comparar corretamente
+    const livros = JSON.parse(fs.readFileSync("livros.json")); //Puxa as informações da array livros.json
+    const livro = livros.find((livro) => Number(livro.id) === id); //Puxa os ids da array livros.json
 
     //Valida se é número
     if (Number.isNaN(id)) {
@@ -114,7 +103,7 @@ function deleteLivro(req, res) {
 module.exports = {
   //Mesma função do export default (react)
   getLivros,
-  getLivro,
+  getLivroID,
   postLivro,
   patchLivro,
   deleteLivro,

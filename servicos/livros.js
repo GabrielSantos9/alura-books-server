@@ -5,12 +5,6 @@ function getTodosLivros() {
   return livroGerais; //Retorna todos os livros do livro.json
 }
 
-function getLivroPorID(id) {
-  const livros = JSON.parse(fs.readFileSync("livros.json")); //'readFileSync' = ler (read) arquivos e 'parse' = transforma em JSON
-  const livroFiltrado = livros.filter((livro) => livro.id === id)[0]; //Esse filtro passará livro por livro no JSON para ver qual é o solicitado (pelo id) até chegar no livro onde o id é o mesmo do solicitado, por ex: o cliente deseja o livro do id 3, logo, vou procurar pelo livro do id 3, no JSON. o [0] é por conta que o livro filtrado pelo id sempre será o único achado naquele id e a indice dele passa a ser 0, por ser único.
-  return livroFiltrado; //Retorna o livro encontrato por ex: encontrou o { "id": "3", "nome": "Livro mais que demais 2" }
-}
-
 function insereLivro(livroNovo) {
   //Essa função serve para inserir um livro novo
   const livros = JSON.parse(fs.readFileSync("livros.json")); //'readFileSync' = ler (read) arquivos e 'parse' = transforma em JSON
@@ -54,7 +48,6 @@ function deletarLivroPorId(id) {
 }
 module.exports = {
   getTodosLivros,
-  getLivroPorID,
   insereLivro,
   modificaLivro,
   deletarLivroPorId,

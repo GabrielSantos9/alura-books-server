@@ -2,7 +2,7 @@ const { Router } = require("express");
 const router = Router();
 const {
   getLivros,
-  getLivro,
+  getLivroID,
   postLivro,
   patchLivro,
   deleteLivro,
@@ -12,7 +12,7 @@ const {
 // Em resumo, a função do 'get' do express recebe uma  request ('req') e response ('res'). Request: É o que nos é mandado (pessoa que chama o nosso serviço manda uma request) e o que é devolvido para ela é a Response
 router.get("/", getLivros);
 
-router.get("/:id", getLivro); //Get por ID, pegar apenas um livro especifico (id)
+router.get("/:id", getLivroID); //Get por ID, pegar apenas um livro especifico (id)
 
 router.post("/", postLivro);
 
