@@ -87,6 +87,7 @@ function deleteLivro(req, res) {
   try {
     const id = req.params.id;
 
+    //Verifica se o id requisito tem na lista
     if (id && Number(id)) {
       deletarLivroPorId(id);
       res.send("livro deletado com sucesso");
