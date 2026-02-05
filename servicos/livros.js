@@ -31,10 +31,11 @@ function modificaLivro(modificacoes, id) {
   livrosAtuais[indiceModificado] = conteudoMudado; //O 'livroAtuais[indiceModificado]' passará a ser 'conteudoMudado', logo, no indice que desejo mudar, o novo valor dele vai passar a ser 'conteudoMudado' e assim será editado o 'const conteudoMudado' com apenas o que é desejado modificar.
 
   fs.writeFileSync("livros.json", JSON.stringify(livrosAtuais)); //"livros.json": é o que desejamos modificar e será passado o "livrosAtuais" para ele. JSON.stringify: transforma em texto
-}
-//Todas as vezes anteriores foi usado 'const', mas dessa vez será usado o let, pois diferente da 'const' o 'let' permite modificar a variavel.
 
-//'writeFileSync' pega os dados (no caso, a lista de livros atualizada) e os escreve no arquivo especificado, substituindo o conteúdo anterior por es
+  //Todas as vezes anteriores foi usado 'const', mas dessa vez será usado o let, pois diferente da 'const' o 'let' permite modificar a variavel.
+}
+
+//'writeFileSync' pega os dados (no caso, a lista de livros atualizada) e os escreve no arquivo especificado, substituindo o conteúdo anterior por esse novo conteúdo.
 
 function deletarLivroPorId(id) {
     const livros = JSON.parse(fs.readFileSync("livros.json"))
@@ -43,8 +44,6 @@ function deletarLivroPorId(id) {
     fs.writeFileSync("livros.json", JSON.stringify(livrosFiltrados)) //Mostra a nova lista do 'livrosFiltrados'
 
     //'livrosFiltrados': Esta é uma nova variável que armazenará o resultado do filtro. Ela conterá apenas os livros que atendem a uma determinada condição.
-
-    //Está dando erro, verificar
 }
 module.exports = {
   getTodosLivros,
